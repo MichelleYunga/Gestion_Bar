@@ -1,5 +1,9 @@
 package com.example.demo.models.dao;
 
-public interface IAdministradorDao {
+import org.springframework.data.repository.CrudRepository;
+
+import com.example.demo.models.entity.Administrador;
+
+public interface IAdministradorDao  extends CrudRepository<Administrador, Long>{
 
 }

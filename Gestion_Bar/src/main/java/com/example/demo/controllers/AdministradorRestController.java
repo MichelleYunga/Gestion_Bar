@@ -15,52 +15,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.models.entity.Cliente;
-import com.example.demo.models.services.IClienteService;
+import com.example.demo.models.entity.Administrador;
+import com.example.demo.models.services.IAdministradorService;
 
 
 @CrossOrigin(origins = { "http://localhost:4200/" })
 @RestController
 @RequestMapping("/api")
-public class ClienteRestController {
+public class AdministradorRestController {
 	
 	@Autowired
-	private IClienteService clienteService;
+	private IAdministradorService  administradorService;
 	
 	/*LISTAR*/
-	@GetMapping ("/cliente")
-	public List<Cliente> index(){
-		return clienteService.findAll();
+	@GetMapping ("/administrador")
+	public List<Administrador> index(){
+		return administradorService.findAll();
 	}
 	
 	/*BUSCAR ID*/
-	@GetMapping ("/cliente/{id}")
-	public Cliente show(@PathVariable Long id) {
-		return clienteService.findById(id);
+	@GetMapping ("/administrador/{id}")
+	public Administrador show(@PathVariable Long id) {
+		return administradorService.findById(id);
 	}
 	
 	/*GUARDAR*/
-	@PostMapping("/cliente")
+	@PostMapping("/administrador")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Cliente create(@RequestBody  Cliente cliente ) {
-		return clienteService.save(cliente);
+	public Administrador create(@RequestBody  Administrador administrador ) {
+		return administradorService.save(administrador);
 	}
 	
 	/*EDITAR*/
-	@PutMapping ("/cliente/{id}")
+	@PutMapping ("/administrador/{id}")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Cliente update(@RequestBody Cliente cliente,@PathVariable Long id) {
-		Cliente cli = clienteService.findById(id);
-		cli.setUsuario(cliente.getUsuario());
-		cli.setContraseña(cliente.getContraseña());
-		return clienteService.save(cli);	
+	public Administrador update(@RequestBody Administrador administrador,@PathVariable Long id) {
+		Administrador admin = administradorService.findById(id);
+		admin.setUsuario(administrador.getUsuario());
+		admin.setContraseña(administrador.getContraseña());
+		return administradorService.save(admin);	
 	}
 	
 	/*ELIMINAR*/
-	@DeleteMapping ("/cliente/{id}")
+	@DeleteMapping ("/administrador/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		clienteService.delete(id);
+		administradorService.delete(id);
 	}
 	
 

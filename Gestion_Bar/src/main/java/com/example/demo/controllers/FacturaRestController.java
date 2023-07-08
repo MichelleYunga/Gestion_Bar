@@ -15,52 +15,53 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.models.entity.Cliente;
-import com.example.demo.models.services.IClienteService;
+import com.example.demo.models.entity.Factura;
+import com.example.demo.models.services.IFacturaService;
 
 
 @CrossOrigin(origins = { "http://localhost:4200/" })
 @RestController
 @RequestMapping("/api")
-public class ClienteRestController {
+public class FacturaRestController {
 	
 	@Autowired
-	private IClienteService clienteService;
+	private IFacturaService faService;
 	
 	/*LISTAR*/
-	@GetMapping ("/cliente")
-	public List<Cliente> index(){
-		return clienteService.findAll();
+	@GetMapping ("/factura")
+	public List<Factura> index(){
+		return faService.findAll();
 	}
 	
 	/*BUSCAR ID*/
-	@GetMapping ("/cliente/{id}")
-	public Cliente show(@PathVariable Long id) {
-		return clienteService.findById(id);
+	@GetMapping ("/factura/{id}")
+	public Factura show(@PathVariable Long id) {
+		return faService.findById(id);
 	}
 	
 	/*GUARDAR*/
-	@PostMapping("/cliente")
+	@PostMapping("/factura")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Cliente create(@RequestBody  Cliente cliente ) {
-		return clienteService.save(cliente);
+	public Factura create(@RequestBody  Factura factura ) {
+		return faService.save(factura);
 	}
 	
 	/*EDITAR*/
-	@PutMapping ("/cliente/{id}")
+	@PutMapping ("/factura/{id}")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Cliente update(@RequestBody Cliente cliente,@PathVariable Long id) {
-		Cliente cli = clienteService.findById(id);
-		cli.setUsuario(cliente.getUsuario());
-		cli.setContraseña(cliente.getContraseña());
-		return clienteService.save(cli);	
+	public Factura update(@RequestBody Factura factura,@PathVariable Long id) {
+		Factura fac = faService.findById(id);
+		fac.setId_cliente(factura.getId_cliente());
+		fac.setId_pedido_detalle(factura.getId_pedido_detalle());
+		fac.setEstado(factura.getEstado());
+		return faService.save(fac);	
 	}
 	
 	/*ELIMINAR*/
-	@DeleteMapping ("/cliente/{id}")
+	@DeleteMapping ("/factura/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		clienteService.delete(id);
+		faService.delete(id);
 	}
 	
 

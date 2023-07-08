@@ -1,5 +1,9 @@
 package com.example.demo.models.dao;
 
-public interface IFactura_DetalleDao {
+import org.springframework.data.repository.CrudRepository;
+
+import com.example.demo.models.entity.Factura_Detalle;
+
+public interface IFactura_DetalleDao extends CrudRepository<Factura_Detalle, Long> {
 
 }

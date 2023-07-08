@@ -15,53 +15,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.models.entity.Cliente;
-import com.example.demo.models.services.IClienteService;
-
+import com.example.demo.models.entity.Factura_Detalle;
+import com.example.demo.models.services.IFactura_DetalleService;
 
 @CrossOrigin(origins = { "http://localhost:4200/" })
 @RestController
 @RequestMapping("/api")
-public class ClienteRestController {
+public class Factura_DetalleRestController {
 	
 	@Autowired
-	private IClienteService clienteService;
+	private IFactura_DetalleService facService;
 	
 	/*LISTAR*/
-	@GetMapping ("/cliente")
-	public List<Cliente> index(){
-		return clienteService.findAll();
+	@GetMapping ("/facturadetalle")
+	public List<Factura_Detalle> index(){
+		return facService.findAll();
 	}
 	
 	/*BUSCAR ID*/
-	@GetMapping ("/cliente/{id}")
-	public Cliente show(@PathVariable Long id) {
-		return clienteService.findById(id);
+	@GetMapping ("/facturadetalle/{id}")
+	public Factura_Detalle show(@PathVariable Long id) {
+		return facService.findById(id);
 	}
 	
 	/*GUARDAR*/
-	@PostMapping("/cliente")
+	@PostMapping("/facturadetalle")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Cliente create(@RequestBody  Cliente cliente ) {
-		return clienteService.save(cliente);
+	public Factura_Detalle create(@RequestBody  Factura_Detalle factura_Detalle ) {
+		return facService.save(factura_Detalle);
 	}
 	
 	/*EDITAR*/
-	@PutMapping ("/cliente/{id}")
+	@PutMapping ("/facturadetalle/{id}")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Cliente update(@RequestBody Cliente cliente,@PathVariable Long id) {
-		Cliente cli = clienteService.findById(id);
-		cli.setUsuario(cliente.getUsuario());
-		cli.setContraseña(cliente.getContraseña());
-		return clienteService.save(cli);	
+	public Factura_Detalle update(@RequestBody Factura_Detalle factura_Detalle,@PathVariable Long id) {
+		Factura_Detalle fac = facService.findById(id);
+		fac.setTotal(factura_Detalle.getTotal());
+		return facService.save(fac);	
 	}
 	
 	/*ELIMINAR*/
-	@DeleteMapping ("/cliente/{id}")
+	@DeleteMapping ("/facturadetalle/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		clienteService.delete(id);
+		facService.delete(id);
 	}
-	
 
 }
