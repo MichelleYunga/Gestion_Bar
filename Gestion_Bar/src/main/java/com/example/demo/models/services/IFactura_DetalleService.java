@@ -2,17 +2,17 @@ package com.example.demo.models.services;
 
 import java.util.List;
 
-import com.example.demo.models.entity.Factura_Detalle;
+import com.example.demo.models.entity.FacturaDetalle;
 
 
 public interface IFactura_DetalleService {
 	
 	
-public List<Factura_Detalle> findAll();
+public List<FacturaDetalle> findAll();
 	
-	public Factura_Detalle save(Factura_Detalle factura_detalle);
+	public FacturaDetalle save(FacturaDetalle factura_detalle);
 	
-	public Factura_Detalle findById(long id);
+	public FacturaDetalle findById(long id);
 	
 	public void delete (long id);
 }

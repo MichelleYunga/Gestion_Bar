@@ -52,7 +52,7 @@ public class AdministradorRestController {
 	public Administrador update(@RequestBody Administrador administrador,@PathVariable Long id) {
 		Administrador admin = administradorService.findById(id);
 		admin.setUsuario(administrador.getUsuario());
-		admin.setContraseña(administrador.getContraseña());
+		admin.setContrase(administrador.getContrase());
 		return administradorService.save(admin);	
 	}
 	

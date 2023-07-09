@@ -2,18 +2,22 @@ package com.example.demo.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity 
-@Table(name= "persona")
+@Table(name= "personas", uniqueConstraints = {@UniqueConstraint(columnNames ={"cedula"})})
 public class Persona implements  Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -27,11 +31,17 @@ public class Persona implements  Serializable{
 	private String telefono;
 	private String correo;
 	private String direccion;
-	
-	@Column(name="fechanacimiento")
-	@Temporal(TemporalType.DATE)
-	private Date fecha;
+	private String fechanacimiento;
 
+
+	// RELACIONES
+		@OneToMany(mappedBy="persona", cascade = CascadeType.ALL)
+		private List<Administrador> administrador;
+		
+		@OneToMany(mappedBy="persona", cascade = CascadeType.ALL)
+		private List<Cliente> cliente;
+		
+	//
 	public Long getId_persona() {
 		return id_persona;
 	}
@@ -88,13 +98,17 @@ public class Persona implements  Serializable{
 		this.direccion = direccion;
 	}
 
-	public Date getFecha() {
-		return fecha;
+	public String getFechanacimiento() {
+		return fechanacimiento;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setFechanacimiento(String fechanacimiento) {
+		this.fechanacimiento = fechanacimiento;
 	}
+
+
+	
+	
 	
 	
 	

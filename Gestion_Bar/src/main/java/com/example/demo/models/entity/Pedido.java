@@ -2,13 +2,8 @@ package com.example.demo.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.persistence.*;
 
 @Entity
@@ -29,8 +24,19 @@ public class Pedido implements Serializable {
 
 	private String pedid_cantidad;
 
-	
-	
+	// RELACIONES
+	@ManyToOne
+	@JoinColumn(name = "id_cliente")
+	private Cliente cliente;
+
+	@ManyToOne
+	@JoinColumn(name = "id_producto")
+	private Producto producto;
+
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	private List<Factura> factura;
+
+//	
 	
 	public Long getId_pedido() {
 		return id_pedido;
@@ -70,6 +76,22 @@ public class Pedido implements Serializable {
 
 	public void setPedid_cantidad(String pedid_cantidad) {
 		this.pedid_cantidad = pedid_cantidad;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Producto getProductos() {
+		return producto;
+	}
+
+	public void setProductos(Producto producto) {
+		this.producto = producto;
 	}
 
 }

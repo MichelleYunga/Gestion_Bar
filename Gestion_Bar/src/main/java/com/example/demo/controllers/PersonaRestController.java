@@ -57,6 +57,7 @@ public class PersonaRestController {
 		per.setTelefono(persona.getTelefono());
 		per.setCorreo(persona.getCorreo());
 		per.setDireccion(persona.getDireccion());
+		per.setFechanacimiento(persona.getFechanacimiento());
 		return personaService.save(per);	
 	}
 	

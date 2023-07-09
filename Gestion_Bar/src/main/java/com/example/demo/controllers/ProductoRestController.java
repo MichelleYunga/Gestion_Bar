@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.models.entity.Productos;
+import com.example.demo.models.entity.Producto;
 import com.example.demo.models.services.IProductoService;
 
 @CrossOrigin(origins = { "http://localhost:4200/" })
@@ -29,29 +29,30 @@ public class ProductoRestController {
 	
 	/*LISTAR*/
 	@GetMapping ("/producto")
-	public List<Productos> index(){
+	public List<Producto> index(){
 		return productoService.findAll();
 	}
 	
 	/*BUSCAR ID*/
 	@GetMapping ("/producto/{id}")
-	public Productos show(@PathVariable Long id) {
+	public Producto show(@PathVariable Long id) {
 		return productoService.findById(id);
 	}
 	
 	/*GUARDAR*/
 	@PostMapping("/protucto")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Productos create(@RequestBody  Productos producto ) {
+	public Producto create(@RequestBody  Producto producto ) {
 		return productoService.save(producto);
 	}
 	
 	/*EDITAR*/
 	@PutMapping ("/producto/{id}")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Productos update(@RequestBody Productos producto,@PathVariable Long id) {
-		Productos prod = productoService.findById(id);
+	public Producto update(@RequestBody Producto producto,@PathVariable Long id) {
+		Producto prod = productoService.findById(id);
 		prod.setProd_cantidad(producto.getProd_cantidad());
+		prod.setProd_codigo(producto.getProd_codigo());
 		prod.setProd_descripción(producto.getProd_descripción());
 		prod.setProd_img(producto.getProd_img());
 		return productoService.save(prod);	

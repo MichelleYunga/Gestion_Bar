@@ -2,14 +2,14 @@ package com.example.demo.models.services;
 
 import java.util.List;
 
-import com.example.demo.models.entity.Productos;
+import com.example.demo.models.entity.Producto;
 
 public interface IProductoService {
-public List<Productos> findAll();
+public List<Producto> findAll();
 	
-	public Productos save(Productos producto);
+	public Producto save(Producto producto);
 	
-	public Productos findById(long id);
+	public Producto findById(long id);
 	
 	public void delete (long id);
 

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.models.entity.Factura_Detalle;
+import com.example.demo.models.entity.FacturaDetalle;
 import com.example.demo.models.services.IFactura_DetalleService;
 
 @CrossOrigin(origins = { "http://localhost:4200/" })
@@ -28,29 +28,29 @@ public class Factura_DetalleRestController {
 	
 	/*LISTAR*/
 	@GetMapping ("/facturadetalle")
-	public List<Factura_Detalle> index(){
+	public List<FacturaDetalle> index(){
 		return facService.findAll();
 	}
 	
 	/*BUSCAR ID*/
 	@GetMapping ("/facturadetalle/{id}")
-	public Factura_Detalle show(@PathVariable Long id) {
+	public FacturaDetalle show(@PathVariable Long id) {
 		return facService.findById(id);
 	}
 	
 	/*GUARDAR*/
 	@PostMapping("/facturadetalle")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Factura_Detalle create(@RequestBody  Factura_Detalle factura_Detalle ) {
-		return facService.save(factura_Detalle);
+	public FacturaDetalle create(@RequestBody  FacturaDetalle facturaDetalle ) {
+		return facService.save(facturaDetalle);
 	}
 	
 	/*EDITAR*/
 	@PutMapping ("/facturadetalle/{id}")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Factura_Detalle update(@RequestBody Factura_Detalle factura_Detalle,@PathVariable Long id) {
-		Factura_Detalle fac = facService.findById(id);
-		fac.setTotal(factura_Detalle.getTotal());
+	public FacturaDetalle update(@RequestBody FacturaDetalle facturaDetalle,@PathVariable Long id) {
+		FacturaDetalle fac = facService.findById(id);
+		fac.setTotal(facturaDetalle.getTotal());
 		return facService.save(fac);	
 	}
 	

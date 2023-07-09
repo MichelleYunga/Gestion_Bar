@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.models.entity.Producto_Categoria;
+import com.example.demo.models.entity.Categoria;
 import com.example.demo.models.services.IProducto_CategoriaService;
 
 
@@ -31,30 +31,30 @@ public class Producto_CategoriaRestController {
 	
 	/*LISTAR*/
 	@GetMapping ("/productocategoria")
-	public List<Producto_Categoria> index(){
+	public List<Categoria> index(){
 		return categoriaService.findAll();
 	}
 	
 	/*BUSCAR ID*/
 	@GetMapping ("/productocategoria/{id}")
-	public Producto_Categoria show(@PathVariable Long id) {
+	public Categoria show(@PathVariable Long id) {
 		return categoriaService.findById(id);
 	}
 	
 	/*GUARDAR*/
 	@PostMapping("/productocategoria")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Producto_Categoria create(@RequestBody Producto_Categoria producto_Categoria ) {
-		return categoriaService.save(producto_Categoria);
+	public Categoria create(@RequestBody Categoria categoria ) {
+		return categoriaService.save(categoria);
 	}
 	
 	/*EDITAR*/
 	@PutMapping ("/productocategoria/{id}")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Producto_Categoria update(@RequestBody Producto_Categoria producto_Categoria,@PathVariable Long id) {
-		Producto_Categoria proc = categoriaService.findById(id);
-		proc.setNombre(producto_Categoria.getNombre());
-		proc.setTipo(producto_Categoria.getTipo());
+	public Categoria update(@RequestBody Categoria categoria,@PathVariable Long id) {
+		Categoria proc = categoriaService.findById(id);
+		proc.setNombre(categoria.getNombre());
+		proc.setTipo(categoria.getTipo());
 		return categoriaService.save(proc);	
 	}
 	

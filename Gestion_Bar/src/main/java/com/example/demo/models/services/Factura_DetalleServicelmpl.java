@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.models.dao.IFactura_DetalleDao;
-import com.example.demo.models.entity.Factura_Detalle;
+import com.example.demo.models.entity.FacturaDetalle;
 
 @Service
 public class Factura_DetalleServicelmpl implements IFactura_DetalleService {
@@ -17,19 +17,19 @@ public class Factura_DetalleServicelmpl implements IFactura_DetalleService {
 	
 	@Override
 	@Transactional (readOnly = true)
-	public List<Factura_Detalle> findAll() {
-		return (List<Factura_Detalle>) facDao.findAll();
+	public List<FacturaDetalle> findAll() {
+		return (List<FacturaDetalle>) facDao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public Factura_Detalle save(Factura_Detalle factura_Detalle) {
-		return facDao.save(factura_Detalle);
+	public FacturaDetalle save(FacturaDetalle facturaDetalle) {
+		return facDao.save(facturaDetalle);
 	}
 
 	@Override
 	@Transactional (readOnly = true)
-	public Factura_Detalle findById(long id) {
+	public FacturaDetalle findById(long id) {
 		return facDao.findById(id).orElse(null);
 	}
 

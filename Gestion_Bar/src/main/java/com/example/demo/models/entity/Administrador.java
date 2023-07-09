@@ -6,10 +6,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name= "administrador")
+@Table(name= "administradores", uniqueConstraints = {@UniqueConstraint(columnNames ={"cedula"})})
 public class Administrador implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -19,7 +22,17 @@ public class Administrador implements Serializable {
 	private Long id_administrador;
 	private String cedula;
 	private String usuario;
-	private String contraseña;
+	private String contrase;
+	
+	
+	//RELACIONES
+		@ManyToOne
+		@JoinColumn(name = "id_persona")
+		private Persona persona;
+
+		
+
+	//
 	
 	public Long getId_administrador() {
 		return id_administrador;
@@ -39,11 +52,17 @@ public class Administrador implements Serializable {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	public String getContraseña() {
-		return contraseña;
+	public String getContrase() {
+		return contrase;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrase(String contrase) {
+		this.contrase = contrase;
+	}
+	public Persona getPersona() {
+		return persona;
+	}
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 	
 	

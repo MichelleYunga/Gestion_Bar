@@ -51,8 +51,6 @@ public class FacturaRestController {
 	@ResponseStatus (HttpStatus.CREATED)
 	public Factura update(@RequestBody Factura factura,@PathVariable Long id) {
 		Factura fac = faService.findById(id);
-		fac.setId_cliente(factura.getId_cliente());
-		fac.setId_pedido_detalle(factura.getId_pedido_detalle());
 		fac.setEstado(factura.getEstado());
 		return faService.save(fac);	
 	}

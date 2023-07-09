@@ -8,12 +8,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name="factura")
+@Table(name="facturas")
 public class Factura  implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -21,36 +23,33 @@ public class Factura  implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_factura;
-	private Long id_cliente;
-	private Long id_pedido_detalle;
 	private String estado;
 	
 	@Column(name="fechafactura")
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
+	//RELACIONES
+			@ManyToOne
+			@JoinColumn(name = "id_pedido")
+			private Pedido pedido;
+
+			@ManyToOne
+			@JoinColumn(name = "id_cliente")
+			private Cliente cliente;
+			
+		@ManyToOne
+			@JoinColumn(name = "id_detalle")
+			private FacturaDetalle facturaDetalle;
+		//
+	
+	
 	public Long getId_factura() {
 		return id_factura;
 	}
 
 	public void setId_factura(Long id_factura) {
 		this.id_factura = id_factura;
-	}
-
-	public Long getId_cliente() {
-		return id_cliente;
-	}
-
-	public void setId_cliente(Long id_cliente) {
-		this.id_cliente = id_cliente;
-	}
-
-	public Long getId_pedido_detalle() {
-		return id_pedido_detalle;
-	}
-
-	public void setId_pedido_detalle(Long id_pedido_detalle) {
-		this.id_pedido_detalle = id_pedido_detalle;
 	}
 
 	public String getEstado() {
@@ -68,6 +67,30 @@ public class Factura  implements Serializable{
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	//public FacturaDetalle getFactdetalle() {
+		//return factdetalle;
+	//}
+
+	//public void setFactdetalle(FacturaDetalle factdetalle) {
+		//this.factdetalle = factdetalle;
+	//}
 	
 	
 	

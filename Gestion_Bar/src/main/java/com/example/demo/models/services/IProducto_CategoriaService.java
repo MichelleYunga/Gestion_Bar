@@ -2,16 +2,16 @@ package com.example.demo.models.services;
 
 import java.util.List;
 
-import com.example.demo.models.entity.Producto_Categoria;
+import com.example.demo.models.entity.Categoria;
 
 
 public interface IProducto_CategoriaService {
 	
-public List<Producto_Categoria> findAll();
+public List<Categoria> findAll();
 	
-	public Producto_Categoria save(Producto_Categoria producto_Categoria);
+	public Categoria save(Categoria categoria);
 	
-	public Producto_Categoria findById(long id);
+	public Categoria findById(long id);
 	
 	public void delete (long id);
 

@@ -1,15 +1,21 @@
 package com.example.demo.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "clientes")
+@Table(name = "clientes", uniqueConstraints = {@UniqueConstraint(columnNames ={"cedula"})})
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,6 +27,20 @@ public class Cliente implements Serializable {
 	private String usuario;
 	private String contraseña;
 	
+
+	//RELACIONES
+		@ManyToOne
+		@JoinColumn(name = "id_persona")
+		private Persona persona;
+		
+		// RELACIONES
+		@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
+		private List<Pedido> pedido;
+		
+		@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
+		private List<Factura> factura;
+	
+	//
 	
 	public Long getId_cliente() {
 		return id_cliente;
@@ -45,6 +65,12 @@ public class Cliente implements Serializable {
 	}
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
+	}
+	public Persona getPersona() {
+		return persona;
+	}
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 	
 	

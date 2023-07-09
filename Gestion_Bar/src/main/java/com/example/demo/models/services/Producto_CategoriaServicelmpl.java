@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.models.dao.IProducto_CategoriaDao;
-import com.example.demo.models.entity.Producto_Categoria;
+import com.example.demo.models.entity.Categoria;
 
 
 @Service
@@ -18,19 +18,19 @@ public class Producto_CategoriaServicelmpl  implements IProducto_CategoriaServic
 
 	@Override
 	@Transactional (readOnly = true)
-	public List<Producto_Categoria> findAll() {
-		return (List<Producto_Categoria>) categoriaDao.findAll();
+	public List<Categoria> findAll() {
+		return (List<Categoria>) categoriaDao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public Producto_Categoria save(Producto_Categoria producto_Categoria) {
-		return categoriaDao.save(producto_Categoria);
+	public Categoria save(Categoria categoria) {
+		return categoriaDao.save(categoria);
 	}
 
 	@Override
 	@Transactional (readOnly = true)
-	public Producto_Categoria findById(long id) {
+	public Categoria findById(long id) {
 		return categoriaDao.findById(id).orElse(null);
 	}
 
