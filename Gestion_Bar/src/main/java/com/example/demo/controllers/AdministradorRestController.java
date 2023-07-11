@@ -63,5 +63,12 @@ public class AdministradorRestController {
 		administradorService.delete(id);
 	}
 	
+	//METODOS PERSONALIZADO
+	
+	@GetMapping("/administrador/{user}/{pass}")
+	public Administrador show(@PathVariable String user, @PathVariable String pass) {
+		return administradorService.findByUserPass(user,pass);
+	}
+	
 
 }

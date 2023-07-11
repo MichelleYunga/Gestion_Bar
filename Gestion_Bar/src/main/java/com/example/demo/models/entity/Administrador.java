@@ -25,6 +25,9 @@ public class Administrador implements Serializable {
 	private String contrase;
 	
 	
+	
+	
+	
 	//RELACIONES
 		@ManyToOne
 		@JoinColumn(name = "id_persona")
@@ -64,6 +67,19 @@ public class Administrador implements Serializable {
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
+	
+	
+	public Administrador() {
+		super();
+	}
+	public Administrador(Long id_administrador, String usuario, String contrase) {
+		super();
+		this.id_administrador = id_administrador;
+		this.usuario = usuario;
+		this.contrase = contrase;
+	}
+	
+	
 	
 	
 	

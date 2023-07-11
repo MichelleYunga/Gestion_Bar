@@ -13,5 +13,9 @@ public List<Administrador> findAll();
 	public Administrador findById(long id);
 	
 	public void delete (long id);
+	
+	
+	//añado en metod personalizado con el nombre que quiera
+		public  Administrador findByUserPass(String usu_nombreUsuario, String contrasena);
 
 }
