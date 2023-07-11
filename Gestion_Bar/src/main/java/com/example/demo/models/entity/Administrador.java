@@ -20,7 +20,7 @@ public class Administrador implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_administrador;
-	private String cedula;
+	private Long id_persona;
 	private String usuario;
 	private String contrase;
 	
@@ -28,8 +28,6 @@ public class Administrador implements Serializable {
 	//RELACIONES
 		@ManyToOne
 		@JoinColumn(name = "id_persona")
-		private Persona persona;
-
 		
 
 	//
@@ -40,11 +38,12 @@ public class Administrador implements Serializable {
 	public void setId_administrador(Long id_administrador) {
 		this.id_administrador = id_administrador;
 	}
-	public String getCedula() {
-		return cedula;
+	
+	public Long getId_persona() {
+		return id_persona;
 	}
-	public void setCedula(String cedula) {
-		this.cedula = cedula;
+	public void setId_persona(Long id_persona) {
+		this.id_persona = id_persona;
 	}
 	public String getUsuario() {
 		return usuario;
@@ -58,12 +57,8 @@ public class Administrador implements Serializable {
 	public void setContrase(String contrase) {
 		this.contrase = contrase;
 	}
-	public Persona getPersona() {
-		return persona;
-	}
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
+	
+	
 	
 	
 	

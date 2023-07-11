@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -37,6 +38,8 @@ public class Persona implements  Serializable{
 	// RELACIONES
 		@OneToMany(mappedBy="persona", cascade = CascadeType.ALL)
 		private List<Administrador> administrador;
+	
+		
 		
 		@OneToMany(mappedBy="persona", cascade = CascadeType.ALL)
 		private List<Cliente> cliente;
