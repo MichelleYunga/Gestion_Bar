@@ -15,53 +15,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.models.entity.Pedido;
-import com.example.demo.models.services.IPedidoService;
+import com.example.demo.models.entity.FacturaCabecera;
+import com.example.demo.models.services.IFacturaCabeceraService;
 
 @CrossOrigin(origins = { "http://localhost:4200/" })
 @RestController
 @RequestMapping("/api")
-public class PedidoRestController {
+public class FacturaCabeceraRestController {
 
 
 	@Autowired
-	private IPedidoService pedidoService;
+	private IFacturaCabeceraService  facturacabeceraService;
 	
 	/*LISTAR*/
-	@GetMapping ("/pedido")
-	public List<Pedido> index(){
-		return pedidoService.findAll();
+	@GetMapping ("/facturaC")
+	public List<FacturaCabecera> index(){
+		return facturacabeceraService.findAll();
 	}
 	
 	/*BUSCAR ID*/
-	@GetMapping ("/pedido/{id}")
-	public Pedido show(@PathVariable Long id) {
-		return pedidoService.findById(id);
+	@GetMapping ("/facturaC/{id}")
+	public FacturaCabecera show(@PathVariable Long id) {
+		return facturacabeceraService.findById(id);
 	}
 	
 	/*GUARDAR*/
-	@PostMapping("/pedido")
+	@PostMapping("/facturaC")
 	@ResponseStatus (HttpStatus.CREATED)
-	public Pedido create(@RequestBody  Pedido pedido ) {
-		return pedidoService.save(pedido);
+	public FacturaCabecera create(@RequestBody  FacturaCabecera facturaCabecera ) {
+		return facturacabeceraService.save(facturaCabecera);
 	}
-	
-	/*EDITAR*/
-	@PutMapping ("/pedido/{id}")
-	@ResponseStatus (HttpStatus.CREATED)
-	public Pedido update(@RequestBody Pedido pedido,@PathVariable Long id) {
-		Pedido ped = pedidoService.findById(id);
-		ped.setPedid_descripcion(pedido.getPedid_descripcion());
-		ped.setPedid_estado(pedido.getPedid_estado());
-		ped.setPed_fecha(pedido.getPed_fecha());
-		ped.setPedid_cantidad(pedido.getPedid_cantidad());
-		return pedidoService.save(ped);	
-	}
+
 	
 	/*ELIMINAR*/
-	@DeleteMapping ("/pedido/{id}")
+	@DeleteMapping ("/facturaC/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		pedidoService.delete(id);
+		facturacabeceraService.delete(id);
 	}
+	
 }

@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "clientes", uniqueConstraints = {@UniqueConstraint(columnNames ={"cedula"})})
+@Table(name = "clientes", uniqueConstraints = {@UniqueConstraint(columnNames ={"usuario"})})
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -23,10 +23,10 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_cliente;
-	private String cedula;
 	private String usuario;
 	private String contraseña;
-	
+
+
 
 	//RELACIONES
 		@ManyToOne
@@ -35,10 +35,10 @@ public class Cliente implements Serializable {
 		
 		// RELACIONES
 		@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
-		private List<Pedido> pedido;
+		private List<PedidoCabecera> pedidoCabecera;
 		
-		@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
-		private List<Factura> factura;
+		//@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
+		//private List<FacturaCabecera> facturaCabecera;
 	
 	//
 	
@@ -47,12 +47,6 @@ public class Cliente implements Serializable {
 	}
 	public void setId_cliente(Long id_cliente) {
 		this.id_cliente = id_cliente;
-	}
-	public String getCedula() {
-		return cedula;
-	}
-	public void setCedula(String cedula) {
-		this.cedula = cedula;
 	}
 	public String getUsuario() {
 		return usuario;

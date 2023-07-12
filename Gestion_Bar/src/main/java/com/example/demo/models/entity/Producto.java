@@ -34,7 +34,7 @@ public class Producto implements Serializable {
 	
 	// RELACIONES
 	@OneToMany(mappedBy="producto", cascade = CascadeType.ALL)
-	private List<Pedido> pedido;
+	private List<PedidoDetalle> pedidodetalle;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")

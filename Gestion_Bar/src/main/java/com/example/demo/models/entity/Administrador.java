@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name= "administradores", uniqueConstraints = {@UniqueConstraint(columnNames ={"cedula"})})
+@Table(name= "administradores", uniqueConstraints = {@UniqueConstraint(columnNames ={"usuario"})})
 public class Administrador implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -20,7 +20,7 @@ public class Administrador implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_administrador;
-	private Long id_persona;
+	
 	private String usuario;
 	private String contrase;
 	
@@ -29,11 +29,24 @@ public class Administrador implements Serializable {
 	
 	
 	//RELACIONES
-		@ManyToOne
-		@JoinColumn(name = "id_persona")
-		
+	@ManyToOne
+	@JoinColumn(name = "id_persona")
+	private Persona persona;		
 
 	//
+
+	
+	public Administrador() {
+		super();
+	}
+	public Administrador(Long id_administrador, String usuario, String contrase) {
+		super();
+		this.id_administrador = id_administrador;
+		this.usuario = usuario;
+		this.contrase = contrase;
+	}
+	
+	
 	
 	public Long getId_administrador() {
 		return id_administrador;
@@ -42,12 +55,7 @@ public class Administrador implements Serializable {
 		this.id_administrador = id_administrador;
 	}
 	
-	public Long getId_persona() {
-		return id_persona;
-	}
-	public void setId_persona(Long id_persona) {
-		this.id_persona = id_persona;
-	}
+
 	public String getUsuario() {
 		return usuario;
 	}
@@ -61,18 +69,6 @@ public class Administrador implements Serializable {
 		this.contrase = contrase;
 	}
 	
-	
-	
-	
-	public Administrador() {
-		super();
-	}
-	public Administrador(Long id_administrador, String usuario, String contrase) {
-		super();
-		this.id_administrador = id_administrador;
-		this.usuario = usuario;
-		this.contrase = contrase;
-	}
 	
 	
 	

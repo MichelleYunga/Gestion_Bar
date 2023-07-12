@@ -15,50 +15,53 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.models.entity.FacturaDetalle;
-import com.example.demo.models.services.IFactura_DetalleService;
+import com.example.demo.models.entity.PedidoDetalle;
+import com.example.demo.models.services.IPedidoDetalleService;
 
 @CrossOrigin(origins = { "http://localhost:4200/" })
 @RestController
 @RequestMapping("/api")
-public class Factura_DetalleRestController {
-	
+public class PedidoDetalleRestController {
+
+
 	@Autowired
-	private IFactura_DetalleService facService;
+	private IPedidoDetalleService  pedidodetalleService;
 	
 	/*LISTAR*/
-	@GetMapping ("/facturadetalle")
-	public List<FacturaDetalle> index(){
-		return facService.findAll();
+	@GetMapping ("/pedidoD")
+	public List<PedidoDetalle> index(){
+		return pedidodetalleService.findAll();
 	}
 	
 	/*BUSCAR ID*/
-	@GetMapping ("/facturadetalle/{id}")
-	public FacturaDetalle show(@PathVariable Long id) {
-		return facService.findById(id);
+	@GetMapping ("/pedidoD/{id}")
+	public PedidoDetalle show(@PathVariable Long id) {
+		return pedidodetalleService.findById(id);
 	}
 	
 	/*GUARDAR*/
-	@PostMapping("/facturadetalle")
+	@PostMapping("/pedidoD")
 	@ResponseStatus (HttpStatus.CREATED)
-	public FacturaDetalle create(@RequestBody  FacturaDetalle facturaDetalle ) {
-		return facService.save(facturaDetalle);
+	public PedidoDetalle create(@RequestBody  PedidoDetalle pedidodetalle ) {
+		return pedidodetalleService.save(pedidodetalle);
 	}
 	
+
 	/*EDITAR*/
-	@PutMapping ("/facturadetalle/{id}")
+	@PutMapping ("/pedidoD/{id}")
 	@ResponseStatus (HttpStatus.CREATED)
-	public FacturaDetalle update(@RequestBody FacturaDetalle facturaDetalle,@PathVariable Long id) {
-		FacturaDetalle fac = facService.findById(id);
-		fac.setTotal(facturaDetalle.getTotal());
-		return facService.save(fac);	
+	public PedidoDetalle update(@RequestBody PedidoDetalle pediddetalle,@PathVariable Long id) {
+		PedidoDetalle pedidoC = pedidodetalleService.findById(id);
+		pedidoC.setCantidad(pediddetalle.getCantidad());
+		pedidoC.setTotal(pediddetalle.getTotal());
+		pedidoC.setProducto(pediddetalle.getProducto());
+			return pedidodetalleService.save(pedidoC);	
 	}
 	
 	/*ELIMINAR*/
-	@DeleteMapping ("/facturadetalle/{id}")
+	@DeleteMapping ("/pedidoD/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		facService.delete(id);
+		pedidodetalleService.delete(id);
 	}
-
 }

@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -19,28 +21,45 @@ public class FacturaDetalle implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_detalle;
-	private Double total;
+	private Long id_facturaD;
 	
 
 	// RELACIONES
-		@OneToMany(mappedBy="facturaDetalle", cascade = CascadeType.ALL)
-		private List<Factura> factura;
 		
+	@ManyToOne
+	@JoinColumn(name = "id_facturaC")
+	private FacturaCabecera facturacabecera;
+
+	@ManyToOne
+	@JoinColumn(name = "id_pedidoD")
+	private PedidoDetalle pedidoDetalle;
+
 	///
 	
-	public Double getTotal() {
-		return total;
+	public Long getId_facturaD() {
+		return id_facturaD;
 	}
-	public Long getId_detalle() {
-		return id_detalle;
+
+	public void setId_facturaD(Long id_facturaD) {
+		this.id_facturaD = id_facturaD;
 	}
-	public void setId_detalle(Long id_detalle) {
-		this.id_detalle = id_detalle;
+
+	public FacturaCabecera getFacturacabecera() {
+		return facturacabecera;
 	}
-	public void setTotal(Double total) {
-		this.total = total;
+
+	public void setFacturacabecera(FacturaCabecera facturacabecera) {
+		this.facturacabecera = facturacabecera;
 	}
+
+	public PedidoDetalle getPedidoDetalle() {
+		return pedidoDetalle;
+	}
+
+	public void setPedidoDetalle(PedidoDetalle pedidoDetalle) {
+		this.pedidoDetalle = pedidoDetalle;
+	}
+
 	
 	
 	

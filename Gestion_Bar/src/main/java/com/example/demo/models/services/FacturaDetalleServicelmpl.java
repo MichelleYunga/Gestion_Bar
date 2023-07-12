@@ -6,42 +6,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.models.dao.IFactura_DetalleDao;
+import com.example.demo.models.dao.IFacturaDetalleDao;
 import com.example.demo.models.entity.FacturaDetalle;
 
 @Service
-public class Factura_DetalleServicelmpl implements IFactura_DetalleService {
+public class FacturaDetalleServicelmpl  implements IFacturaDetalleService{
+
 	
+
 	@Autowired
-	private IFactura_DetalleDao facDao;
-	
+	private IFacturaDetalleDao facturadetalleDao;
+
 	@Override
 	@Transactional (readOnly = true)
 	public List<FacturaDetalle> findAll() {
-		return (List<FacturaDetalle>) facDao.findAll();
+		return (List<FacturaDetalle>) facturadetalleDao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public FacturaDetalle save(FacturaDetalle facturaDetalle) {
-		return facDao.save(facturaDetalle);
+	public FacturaDetalle save(FacturaDetalle facturadetalle) {
+		return facturadetalleDao.save(facturadetalle);
 	}
 
 	@Override
 	@Transactional (readOnly = true)
 	public FacturaDetalle findById(long id) {
-		return facDao.findById(id).orElse(null);
+		return facturadetalleDao.findById(id).orElse(null);
 	}
 
 	@Override
 	@Transactional
 	public void delete(long id) {
-		facDao.deleteById(id);
+		facturadetalleDao.deleteById(id);
 	}
-
-	
-
-	
-	
 
 }
