@@ -40,6 +40,17 @@ public class AdministradorServicelmpl implements IAdministradorService {
 	public void delete(long id) {
 		administradorDao.deleteById(id);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Administrador findByUserPass(String usu_nombreUsuario, String contrasena) {
+		// TODO Auto-generated method stub
+		return administradorDao.findByUsuNombreUsuarioAndUsuContraUsuario(usu_nombreUsuario, contrasena);
+	}
+	
+	
+	
+	
 	
 	
 
