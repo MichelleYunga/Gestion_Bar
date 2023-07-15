@@ -12,9 +12,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table (name="FacturaDetalles")
+@Table (name="FacturaDetalles", uniqueConstraints = {@UniqueConstraint(columnNames ={"id_facturaC", "id_pedidoD"})})
 public class FacturaDetalle implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -28,7 +29,7 @@ public class FacturaDetalle implements Serializable {
 		
 	@ManyToOne
 	@JoinColumn(name = "id_facturaC")
-	private FacturaCabecera facturacabecera;
+	private FacturaCabecera facturaCabecera;
 
 	@ManyToOne
 	@JoinColumn(name = "id_pedidoD")
@@ -44,12 +45,13 @@ public class FacturaDetalle implements Serializable {
 		this.id_facturaD = id_facturaD;
 	}
 
-	public FacturaCabecera getFacturacabecera() {
-		return facturacabecera;
+	
+	public FacturaCabecera getFacturaCabecera() {
+		return facturaCabecera;
 	}
 
-	public void setFacturacabecera(FacturaCabecera facturacabecera) {
-		this.facturacabecera = facturacabecera;
+	public void setFacturaCabecera(FacturaCabecera facturaCabecera) {
+		this.facturaCabecera = facturaCabecera;
 	}
 
 	public PedidoDetalle getPedidoDetalle() {

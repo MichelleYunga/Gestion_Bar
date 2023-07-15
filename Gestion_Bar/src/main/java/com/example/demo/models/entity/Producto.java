@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "productos", uniqueConstraints = {@UniqueConstraint(columnNames ={"prod_codigo"})})
+@Table(name = "productos", uniqueConstraints = {@UniqueConstraint(columnNames ={"prod_codigo","id_categoria"})})
 public class Producto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,7 +34,7 @@ public class Producto implements Serializable {
 	
 	// RELACIONES
 	@OneToMany(mappedBy="producto", cascade = CascadeType.ALL)
-	private List<PedidoDetalle> pedidodetalle;
+	private List<PedidoDetalle> pedidoDetalle;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")

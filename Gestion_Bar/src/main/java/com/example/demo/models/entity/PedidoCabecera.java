@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "pedidoCabeceras")
+@Table(name = "pedidoCabeceras", uniqueConstraints = {@UniqueConstraint(columnNames ={"id_cliente"})})
 public class PedidoCabecera implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,7 +31,7 @@ public class PedidoCabecera implements Serializable {
 
 
 	@OneToMany(mappedBy = "pedidoCabecera", cascade = CascadeType.ALL)
-	private List<FacturaCabecera> facturacabecera;
+	private List<FacturaCabecera> facturaCabecera;
 
 	@OneToMany(mappedBy = "pedidoCabecera", cascade = CascadeType.ALL)
 	private List<PedidoDetalle> pedidoDetalle;

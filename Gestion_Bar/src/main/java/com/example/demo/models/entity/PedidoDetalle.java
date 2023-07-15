@@ -12,9 +12,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "pedidoDetalles")
+@Table(name = "pedidoDetalles", uniqueConstraints = {@UniqueConstraint(columnNames ={"id_pedidoC", "id_producto"})})
 public class PedidoDetalle implements Serializable {
 	private static final long serialVersionUID = 1L;
 

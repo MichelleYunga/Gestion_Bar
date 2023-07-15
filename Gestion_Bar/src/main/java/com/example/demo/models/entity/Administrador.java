@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name= "administradores", uniqueConstraints = {@UniqueConstraint(columnNames ={"usuario"})})
+@Table(name= "administradores", uniqueConstraints = {@UniqueConstraint(columnNames ={"id_persona", "usuario"})})
 public class Administrador implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
