@@ -16,9 +16,10 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="facturacabeceras")
+@Table(name="facturaCabeceras", uniqueConstraints = {@UniqueConstraint(columnNames ={"id_pedidoC"})})
 public class FacturaCabecera  implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -35,8 +36,8 @@ public class FacturaCabecera  implements Serializable{
 
 		
 		
-			@OneToMany(mappedBy="facturacabecera", cascade = CascadeType.ALL)
-			private List<FacturaDetalle> facturadetalle;
+			@OneToMany(mappedBy="facturaCabecera", cascade = CascadeType.ALL)
+			private List<FacturaDetalle> facturaDetalle;
 			
 			
 		//
