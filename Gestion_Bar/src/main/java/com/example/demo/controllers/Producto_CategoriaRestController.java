@@ -30,26 +30,26 @@ public class Producto_CategoriaRestController {
 	
 	
 	/*LISTAR*/
-	@GetMapping ("/productocategoria")
+	@GetMapping ("/listar")
 	public List<Categoria> index(){
 		return categoriaService.findAll();
 	}
 	
 	/*BUSCAR ID*/
-	@GetMapping ("/productocategoria/{id}")
+	@GetMapping ("/Buscar/{id}")
 	public Categoria show(@PathVariable Long id) {
 		return categoriaService.findById(id);
 	}
 	
 	/*GUARDAR*/
-	@PostMapping("/productocategoria")
+	@PostMapping("/agregar")
 	@ResponseStatus (HttpStatus.CREATED)
 	public Categoria create(@RequestBody Categoria categoria ) {
 		return categoriaService.save(categoria);
 	}
 	
 	/*EDITAR*/
-	@PutMapping ("/productocategoria/{id}")
+	@PutMapping ("/actualizar/{id}")
 	@ResponseStatus (HttpStatus.CREATED)
 	public Categoria update(@RequestBody Categoria categoria,@PathVariable Long id) {
 		Categoria proc = categoriaService.findById(id);
@@ -59,7 +59,7 @@ public class Producto_CategoriaRestController {
 	}
 	
 	/*ELIMINAR*/
-	@DeleteMapping ("/productocategoria/{id}")
+	@DeleteMapping ("/eliminar/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		categoriaService.delete(id);

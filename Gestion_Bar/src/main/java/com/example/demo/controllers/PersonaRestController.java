@@ -82,31 +82,19 @@ public class PersonaRestController {
 		personaService.delete(id);
 	}
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	
 	@GetMapping("/datos-relacionados")
     public ResponseEntity<List<Persona>>  obtenerDatosRelacionados() {
         List<Persona> datosRelacionados = personaRepository.findAll();
         return ResponseEntity.ok(datosRelacionados);
     }
-=======
-=======
->>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
-=======
->>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
+
 	//METODO PERSONALIZADO 
 	
 	@GetMapping("/personaced/{cedula}")
 	public Persona show2(@PathVariable String cedula) {
 		return personaService.findByCedula(cedula);
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
-=======
->>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
-=======
->>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
+
 }
