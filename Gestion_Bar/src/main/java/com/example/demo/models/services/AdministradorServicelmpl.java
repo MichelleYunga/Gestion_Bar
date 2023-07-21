@@ -47,9 +47,7 @@ public class AdministradorServicelmpl implements IAdministradorService {
 		// TODO Auto-generated method stub
 		return administradorDao.findByUsuNombreUsuarioAndUsuContraUsuario(usu_nombreUsuario, contrasena);
 	}
-	
-	
-	
+
 	
 	
 	

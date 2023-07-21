@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import com.example.demo.models.dao.IClienteDao;
 import com.example.demo.models.entity.Cliente;
 
@@ -16,6 +17,7 @@ public class ClienteServicelmpl implements IClienteService {
 	
 	@Autowired
 	private IClienteDao clienteDao;
+	
 
 	@Override
 	@Transactional (readOnly = true)
@@ -42,6 +44,8 @@ public class ClienteServicelmpl implements IClienteService {
 	}
 
 	
+
+	  
 
 	
 	

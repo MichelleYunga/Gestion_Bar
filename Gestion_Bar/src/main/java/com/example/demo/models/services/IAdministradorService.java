@@ -18,4 +18,5 @@ public List<Administrador> findAll();
 	//añado en metod personalizado con el nombre que quiera
 		public  Administrador findByUserPass(String usu_nombreUsuario, String contrasena);
 
+		
 }
