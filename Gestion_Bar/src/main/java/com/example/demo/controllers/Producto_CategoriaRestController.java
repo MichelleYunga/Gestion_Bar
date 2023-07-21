@@ -21,7 +21,7 @@ import com.example.demo.models.services.IProducto_CategoriaService;
 
 @CrossOrigin(origins = { "http://localhost:4200/" })
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/categorias")
 public class Producto_CategoriaRestController {
 	
 	
