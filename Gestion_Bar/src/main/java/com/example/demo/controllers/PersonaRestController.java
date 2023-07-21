@@ -43,6 +43,7 @@ public class PersonaRestController {
 	@PostMapping("/persona")
 	@ResponseStatus (HttpStatus.CREATED)
 	public Persona create(@RequestBody  Persona persona ) {
+		System.out.println(persona.getCedula()+"1234");
 		return personaService.save(persona);
 	}
 	
@@ -66,5 +67,12 @@ public class PersonaRestController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		personaService.delete(id);
+	}
+	
+	//METODO PERSONALIZADO 
+	
+	@GetMapping("/personaced/{cedula}")
+	public Persona show2(@PathVariable String cedula) {
+		return personaService.findByCedula(cedula);
 	}
 }

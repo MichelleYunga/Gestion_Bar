@@ -39,6 +39,14 @@ public class PersonaServicelmpl implements IPersonaService{
 		personaDao.deleteById(id);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Persona findByCedula(String cedula) {
+		// TODO Auto-generated method stub
+		return personaDao.findByCedula(cedula);
+	}
+	
+
 	
 	
 	

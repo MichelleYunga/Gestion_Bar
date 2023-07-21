@@ -14,5 +14,7 @@ public List<Persona> findAll();
 	public Persona findById(long id);
 	
 	public void delete (long id);
+	
+	public Persona findByCedula (String cedula); 
 
 }

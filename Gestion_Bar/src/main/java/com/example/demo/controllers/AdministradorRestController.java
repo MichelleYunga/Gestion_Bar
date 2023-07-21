@@ -70,5 +70,6 @@ public class AdministradorRestController {
 		return administradorService.findByUserPass(user,pass);
 	}
 	
+	
 
 }

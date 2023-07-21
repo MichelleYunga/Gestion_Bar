@@ -15,5 +15,10 @@ public interface IAdministradorDao  extends CrudRepository<Administrador, Long>{
 		//siempre tiene que ir el findBy y el nombre los atributos tal y como esta en la clase usuario el AND sirve para separar los atributos que se van a usar para buscar
 		Administrador findByUsuNombreUsuarioAndUsuContraUsuario(@Param("usuario") String UsuNombreUsuario, @Param("contrasena") String UsuContraUsuario);
 		
+		
+		
+		
+		
+		
 
 }
