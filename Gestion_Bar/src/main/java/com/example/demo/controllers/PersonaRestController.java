@@ -84,6 +84,7 @@ public class PersonaRestController {
 	
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	@GetMapping("/datos-relacionados")
     public ResponseEntity<List<Persona>>  obtenerDatosRelacionados() {
@@ -93,6 +94,8 @@ public class PersonaRestController {
 =======
 =======
 >>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
+=======
+>>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
 	//METODO PERSONALIZADO 
 	
 	@GetMapping("/personaced/{cedula}")
@@ -100,6 +103,9 @@ public class PersonaRestController {
 		return personaService.findByCedula(cedula);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
+=======
 >>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
 =======
 >>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82

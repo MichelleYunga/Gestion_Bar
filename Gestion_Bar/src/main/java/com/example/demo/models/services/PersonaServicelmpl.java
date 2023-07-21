@@ -53,6 +53,7 @@ public class PersonaServicelmpl implements IPersonaService{
 	@Override
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@Transactional (readOnly = true)
 	public List<Persona> ObtenerDatos() {
 		// TODO Auto-generated method stub
@@ -62,12 +63,17 @@ public class PersonaServicelmpl implements IPersonaService{
 =======
 =======
 >>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
+=======
+>>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
 	@Transactional(readOnly = true)
 	public Persona findByCedula(String cedula) {
 		// TODO Auto-generated method stub
 		return personaDao.findByCedula(cedula);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
+=======
 >>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
 =======
 >>>>>>> c6854097bf79d0a4ed8db5ec8a6e2ff532866d82
