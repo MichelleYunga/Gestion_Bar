@@ -28,38 +28,38 @@ public class ProductoRestController {
 	private IProductoService productoService;
 	
 	/*LISTAR*/
-	@GetMapping ("/producto")
+	@GetMapping ("/listar")
 	public List<Producto> index(){
 		return productoService.findAll();
 	}
 	
 	/*BUSCAR ID*/
-	@GetMapping ("/producto/{id}")
+	@GetMapping ("/agregar/{id}")
 	public Producto show(@PathVariable Long id) {
 		return productoService.findById(id);
 	}
 	
 	/*GUARDAR*/
-	@PostMapping("/protucto")
+	@PostMapping("/agregar")
 	@ResponseStatus (HttpStatus.CREATED)
 	public Producto create(@RequestBody  Producto producto ) {
 		return productoService.save(producto);
 	}
 	
 	/*EDITAR*/
-	@PutMapping ("/producto/{id}")
+	@PutMapping ("/actualizar/{id}")
 	@ResponseStatus (HttpStatus.CREATED)
 	public Producto update(@RequestBody Producto producto,@PathVariable Long id) {
 		Producto prod = productoService.findById(id);
 		prod.setProd_cantidad(producto.getProd_cantidad());
 		prod.setProd_codigo(producto.getProd_codigo());
-		prod.setProd_descripción(producto.getProd_descripción());
+		prod.setProd_descripcion(producto.getProd_descripcion());
 		prod.setProd_img(producto.getProd_img());
 		return productoService.save(prod);	
 	}
 	
 	/*ELIMINAR*/
-	@DeleteMapping ("/producto/{id}")
+	@DeleteMapping ("/eliminar/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		productoService.delete(id);
