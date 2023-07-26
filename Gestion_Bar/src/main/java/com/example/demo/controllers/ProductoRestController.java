@@ -54,6 +54,7 @@ public class ProductoRestController {
 		prod.setProd_cantidad(producto.getProd_cantidad());
 		prod.setProd_codigo(producto.getProd_codigo());
 		prod.setProd_descripcion(producto.getProd_descripcion());
+		prod.setPrecio(producto.getPrecio());
 		prod.setProd_img(producto.getProd_img());
 		return productoService.save(prod);	
 	}
